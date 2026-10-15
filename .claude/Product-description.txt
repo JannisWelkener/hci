@@ -1,0 +1,342 @@
+<invoke name="artifacts"><parameter name="command">create</parameter><parameter name="type">text/markdown</parameter><parameter name="id">hci_project_description</parameter><parameter name="title">HCI Study Design - Project Description</parameter><parameter name="content"># AI HCI Study Design - Project Description
+Executive Summary
+A comprehensive web application designed to guide students through the Human-Centered Design (HCD) process according to ISO 9241-210 standards. The platform provides structured methodological support, templates, and AI-assisted tools to help students plan, execute, and document HCI projects effectively.
+Core Vision
+Students often struggle with systematically planning HCI projects and selecting appropriate methods for each phase of the design process. This platform bridges that gap by providing:
+
+A structured, phase-based approach to HCI project planning
+A comprehensive library of HCI methods with practical guidance
+Integrated tools for creating and managing project artifacts
+AI-assisted support throughout the development process
+
+Key User Groups
+Primary Users
+
+Master's students in HCI, UX Design, or related fields
+Project teams working on semester-long HCI projects
+Individual learners seeking to understand the HCD process
+
+Use Cases
+
+Planning and structuring HCI course projects
+Learning and applying HCI methods systematically
+Documenting design decisions and artifacts
+Collaborating on team-based projects
+
+Functional Requirements
+1. Process Management Module
+Goal: Provide clear navigation through the HCD lifecycle
+Features:
+
+Interactive visualization of ISO 9241-210 process model
+Phase indicators showing current project stage
+Progress tracking with milestone management
+Guided workflows for each phase (Analysis → Requirements → Solutions → Evaluation)
+
+User Stories:
+
+As a student, I want to see which phase of the HCD process I'm currently in, so that I understand my project's progress
+As a student, I want to navigate between different project phases, so that I can work on tasks in a structured manner
+As a team member, I want to track completed milestones, so that our team stays aligned on progress
+
+2. Method Library
+Goal: Enable informed selection of appropriate HCI methods
+Features:
+
+Categorized method catalog by project phase
+Detailed method profiles including:
+
+When to use the method
+Required resources (time, participants, materials)
+Step-by-step application guidelines
+Expected outcomes
+
+
+Advanced filtering by:
+
+Project phase
+Effort level
+Number of participants required
+Method objectives
+
+
+Search functionality
+Comparison tool for similar methods
+
+User Stories:
+
+As a student, I want to browse methods by project phase, so that I can find appropriate techniques for my current work
+As a student, I want to filter methods by effort level, so that I can choose techniques that fit my time constraints
+As a student, I want to see detailed guidelines for each method, so that I can apply them correctly
+
+3. Project Documentation System
+Goal: Centralize all project artifacts in one accessible location
+Features:
+Persona Builder
+
+Template-based persona creation
+Photo upload capability
+Structured fields for demographics, goals, behaviors, and context
+Export functionality (PDF/image)
+
+User Stories Manager
+
+Standard format templates ("As a [role], I want [action] so that [benefit]")
+Acceptance criteria definition
+Priority assignment
+Linking stories to personas
+Planning poker integration for estimation
+
+User Journey Mapping Tool
+
+Visual journey builder with drag-and-drop interface
+Emotional curve visualization
+Phase breakdown (touchpoints, actions, thoughts, feelings)
+Opportunity identification
+Multiple persona journey support
+
+Requirements Templates
+
+User needs documentation
+Functional/non-functional requirements
+Conceptual design artifacts
+Physical design specifications
+
+Prototyping Area
+
+Version control for design iterations
+Linking prototypes to requirements
+Annotation and feedback tools
+Integration with common design tools (Figma embed)
+
+User Stories:
+
+As a student, I want to create personas using templates, so that I can quickly document user research findings
+As a student, I want to write user stories in a structured format, so that my requirements are clear and testable
+As a student, I want to map user journeys visually, so that I can identify pain points and opportunities
+As a team member, I want to see all project artifacts in one place, so that I can easily reference previous work
+
+4. AI-Assisted Features
+Goal: Leverage AI to enhance productivity and learning
+Features:
+
+Method recommendation based on project context
+Template auto-completion suggestions
+Content generation for personas (based on research inputs)
+User story refinement suggestions
+Design critique and feedback
+Documentation quality checks
+
+User Stories:
+
+As a student, I want AI to suggest appropriate methods for my project phase, so that I make informed choices
+As a student, I want AI to help me refine my user stories, so that they meet quality standards
+As a student, I want AI to review my documentation, so that I can identify gaps or inconsistencies
+
+Technical Architecture
+Frontend
+
+Framework: Next.js 14+ with App Router
+UI Library: React 18+
+Language: TypeScript
+Styling: Tailwind CSS + shadcn/ui components
+State Management: React Context + TanStack Query
+Form Handling: React Hook Form + Zod validation
+
+Backend
+
+Framework: NestJS
+Language: TypeScript
+API: RESTful + GraphQL (optional)
+Real-time: WebSockets for collaboration features
+
+Database & Services
+
+Database: Supabase (PostgreSQL)
+Authentication: Supabase Auth (email/password, OAuth)
+Storage: Supabase Storage for file uploads
+Real-time subscriptions: Supabase Realtime
+
+Deployment
+
+Containerization: Docker + Docker Compose
+Version Control: GitHub
+CI/CD: GitHub Actions
+Hosting: Vercel (Frontend) + Railway/Render (Backend)
+
+Data Model (Core Entities)
+Project
+
+id, name, description
+phase (analysis, requirements, solutions, evaluation)
+created_at, updated_at
+team_id (for collaboration)
+
+Persona
+
+id, project_id
+name, age, photo_url
+demographics (occupation, technical_competence)
+goals, motivations, behaviors
+pain_points, expectations
+
+UserStory
+
+id, project_id, persona_id
+role, action, benefit
+acceptance_criteria[]
+priority, status
+story_points (from planning poker)
+
+UserJourney
+
+id, project_id, persona_id
+scenario, goals
+phases[] (touchpoints, actions, thoughts, emotions)
+opportunities[]
+
+Method
+
+id, name, category, phase
+description, guidelines
+effort_level, participant_count
+objectives[], outcomes[]
+
+Artifact
+
+id, project_id, type (prototype, diagram, document)
+version, file_url
+linked_requirements[]
+
+User Flows
+New Project Setup
+
+User creates account / logs in
+Creates new project with basic info
+Selects primary persona/user group
+Platform suggests initial methods for Analysis phase
+User begins with context analysis
+
+Method Selection & Application
+
+User navigates to current project phase
+Filters methods by objectives and effort
+Reviews method details and guidelines
+Adds method to project plan
+Executes method and documents findings
+
+Persona Creation
+
+User selects "Create Persona" from project dashboard
+Fills template with research findings
+AI suggests additional characteristics based on context
+Reviews and refines persona
+Saves and links to project
+
+Journey Mapping
+
+User selects persona for journey
+Defines scenario and goals
+Maps touchpoints and phases
+Documents actions, thoughts, emotions per phase
+Generates emotional curve visualization
+Identifies opportunities and pain points
+
+Success Metrics
+User Engagement
+
+Active projects per user
+Methods explored vs. applied
+Artifacts created per project
+Time spent in platform per session
+
+Learning Outcomes
+
+Completion rate of project phases
+Quality of documentation (via peer/instructor review)
+Method diversity (breadth of techniques used)
+Adherence to ISO 9241-210 process
+
+Technical Performance
+
+Page load time < 2 seconds
+Real-time sync latency < 100ms
+Uptime > 99.5%
+Mobile responsiveness score > 90
+
+Development Phases
+Phase 1: MVP (Weeks 1-4)
+
+User authentication
+Basic project creation and management
+Method library with filtering
+Persona template and creation
+Simple user story manager
+
+Phase 2: Core Features (Weeks 5-8)
+
+User journey mapping tool
+Requirements documentation templates
+Prototype version control
+AI method recommendations
+Progress tracking dashboard
+
+Phase 3: Collaboration & Polish (Weeks 9-12)
+
+Team collaboration features
+Real-time editing
+AI-assisted content generation
+Export functionality
+Mobile optimization
+
+Phase 4: Advanced Features (Weeks 13-16)
+
+Planning poker integration
+Advanced analytics
+Integration with external tools (Figma, Miro)
+Comprehensive documentation
+User testing and refinement
+
+Risk Assessment & Mitigation
+Technical Risks
+
+AI integration complexity: Start with simpler AI features, iterate based on feedback
+Real-time sync challenges: Use Supabase Realtime, implement conflict resolution
+Data migration: Version database schema, maintain backward compatibility
+
+User Adoption Risks
+
+Learning curve: Provide onboarding tutorial, contextual help
+Feature overwhelm: Progressive disclosure, role-based views
+Integration with existing workflows: Support import/export, external tool integrations
+
+Accessibility & Internationalization
+
+WCAG 2.1 Level AA compliance
+Keyboard navigation support
+Screen reader compatibility
+Initial language: English (German support in future)
+RTL layout support for future expansion
+
+Project Reflection & Documentation
+AI Development Tracking
+Students will document:
+
+Which AI tools were used for which tasks
+Efficiency gains vs. traditional development
+Limitations encountered
+Best practices discovered
+Ethical considerations
+
+Deliverables
+
+Functional web application
+Technical documentation
+User guide
+AI integration report
+Project retrospective
+Code repository with clear commit history
+
+Conclusion
+This platform transforms the challenging task of planning HCI projects into a guided, structured learning experience. By combining modern web technologies with AI assistance, students gain both practical skills and theoretical understanding of human-centered design processes.
+</parameter></invoke>

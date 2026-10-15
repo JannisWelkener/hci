@@ -1,0 +1,2 @@
+-- Rollback wireframes table and all related objects
+--DROP TABLE IF EXISTS wireframes CASCADE;

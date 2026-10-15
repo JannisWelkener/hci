@@ -1,0 +1,65 @@
+@font-face {
+    font-family: "Unit Slab Bold Italic";
+    src: url("/fonts/UnitSlabWebPro-BoldIta W01 Rg.ttf") format("truetype");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Unit Slab Light";
+    src: url("/fonts/UnitSlabWebW06-Light.ttf") format("truetype");
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Unit Medium";
+    src: url("/fonts/Unit-Medium.ttf") format("truetype");
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+}
+
+.unitMedium {
+    font-family: "Unit Medium";
+    font-weight: 400;
+    font-size: 22px;
+}
+
+.profileGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 24px; /* row gap, column gap */
+  max-width: 300px; /* optional: controls layout width */
+  overflow: hidden;
+}
+
+.profileItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 130px;
+}
+
+.iconCircle {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #DC3C05;
+  color: white;
+  flex-shrink: 0; /* prevents shrinking if label is long */
+}
+
+.buzzwords{
+    background-color: #EEEEEE;
+    border-radius: 30px;
+    padding: 5px 10px;
+    display: inline-block;
+    margin: 5px;
+    margin-left: 0px;
+}

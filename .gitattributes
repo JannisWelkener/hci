@@ -1,0 +1,3 @@
+# Exclude documentation files from GitHub language statistics
+*.md linguist-documentation
+*.txt linguist-documentation
